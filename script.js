@@ -91,6 +91,13 @@ const quizData = [
   
     if (selectedOption.value === quizData[currentQuestionIndex].answer) {
       score++;
+    } else {
+      // If the selected option is incorrect, subtract time
+      timeLeft -= 10; // Adjust the time penalty as needed
+      if (timeLeft < 0) {
+        timeLeft = 0; // Ensure timeLeft doesn't go negative
+      }
+      timerElement.textContent = `${timeLeft}`;
     }
   
     currentQuestionIndex++;
