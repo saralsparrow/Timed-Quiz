@@ -27,28 +27,34 @@ const quizData = [
     // Add more questions here
   ];
   
-  const startButton = document.getElementById('start-btn')
-  const startContainer = document.getElementById('start-cont')
+  const startButton = document.getElementById('start-btn');
+  const startContainer = document.getElementById('start-container');
+  const quiz = document.getElementById('quiz');
   const quizContainer = document.getElementById('quiz-container');
   const resultContainer = document.getElementById('result-container');
   const questionElement = document.getElementById('question');
   const optionsElement = document.getElementById('options');
   const submitButton = document.getElementById('submit-btn');
   const timerElement = document.getElementById('time');
+  const timer = document.getElementById('timer');
   
   let currentQuestionIndex = 0;
   let score = 0;
-  let timeLeft = 60; // Change to set the time limit in seconds
+  let timeLeft = 90; // Change to set the time limit in seconds
 
   function displayStart() {
     startContainer.style.display = 'block';
     quizContainer.style.display = 'none';
     resultContainer.style.display = 'none';
+    timer.style.display = 'none';
+    quiz.style.display = 'none';
   }
   
   function startQuiz() {
     startContainer.style.display = 'none';
     quizContainer.style.display = 'block';
+    timer.style.display = 'block';
+    quiz.style.display = 'block';
     displayQuestion();
     startTimer();
   }
