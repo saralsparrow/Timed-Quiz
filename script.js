@@ -1,14 +1,29 @@
 const quizData = [
     {
-      question: "What is the capital of France?",
-      options: ["Paris", "Berlin", "London", "Madrid"],
-      answer: "Paris"
+      question: "What type of programming language is Javascript?",
+      options: ["Object-Oriented", "Object-Based", "Assembly-language", "High-level"],
+      answer: "Object-Based"
     },
     {
-      question: "Which planet is known as the Red Planet?",
-      options: ["Mars", "Jupiter", "Saturn", "Venus"],
-      answer: "Mars"
+      question: "Which one of the following is also known as a conditional expression?",
+      options: ["Alternative to if-else", "Switch statement", "If-then-else statement", "Immediate if"],
+      answer: "Immediate if"
     },
+    {
+      question: "What is a block of statement in JavaScript?",
+      options: ["Conditional block", "block that combines a number of statements into a single compound statement", "both conditional block and a single statement", "block that contatins a single statement"],
+      answer: "block that combines a number of statements into a single compound statement"
+    },
+    {
+      question: "When an interpreter encounters an empty statements, what will it do?",
+      options: ["Shows a warning", "Prompts to complete the statement", "Throws an error", "Ignores the statement"],
+      answer: "Ignores the statement"
+    },
+    {
+      question: "The 'function' and 'var' are known as:",
+      options: ["Keywords", "Data types", "Declaration statements", "Prototypes"],
+      answer: "Declaration statements"
+    }
     // Add more questions here
   ];
   
@@ -76,7 +91,7 @@ const quizData = [
   function startTimer() {
     const timerInterval = setInterval(() => {
       timeLeft--;
-      timerElement.textContent = `${timeLeft} seconds`;
+      timerElement.textContent = `${timeLeft}`;
   
       if (timeLeft === 0) {
         clearInterval(timerInterval);

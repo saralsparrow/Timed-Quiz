@@ -1,45 +1,62 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #fcdef0;
+    color: #000557;
   }
   
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  #quiz-container {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  #options {
-    margin-bottom: 10px;
-  }
-  
-  #options label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  #submit-btn {
-    display: block;
-    margin: 0 auto;
-  }
-  
-  #result-container {
-    border: 1px solid #ccc;
-    padding: 20px;
-    display: none;
-  }
-  
-  #timer {
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
+.container {
+max-width: 600px;
+margin: 0 auto;
+padding: 20px;
+}
+
+h1 {
+text-align: center;
+}
+
+#quiz-container {
+border: 5px solid #000557;
+padding: 20px;
+margin-bottom: 20px;
+background-color: rgb(175, 235, 255);
+}
+
+#question {
+text-align: center;
+font-size: 25px;
+}
+
+#options {
+margin-bottom: 10px;
+}
+
+#options label {
+display: block;
+margin-bottom: 5px;
+}
+
+#submit-btn {
+display: block;
+margin: 0 auto;
+font-size: 20px;
+background-color: rgb(175, 235, 255);
+color: #000557;
+}
+
+#submit-btn:hover {
+  font-size: 25px;
+  background-color: #fcdef0;
+}
+
+#result-container {
+border: 5px solid #000557;
+padding: 20px;
+display: none;
+background-color: rgb(175, 235, 255);
+}
+
+#timer {
+text-align: center;
+font-size: 18px;
+margin-bottom: 20px;
+}
