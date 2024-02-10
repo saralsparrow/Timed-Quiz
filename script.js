@@ -27,6 +27,8 @@ const quizData = [
     // Add more questions here
   ];
   
+  const startButton = document.getElementById('start-btn')
+  const startContainer = document.getElementById('start-cont')
   const quizContainer = document.getElementById('quiz-container');
   const resultContainer = document.getElementById('result-container');
   const questionElement = document.getElementById('question');
@@ -37,6 +39,19 @@ const quizData = [
   let currentQuestionIndex = 0;
   let score = 0;
   let timeLeft = 60; // Change to set the time limit in seconds
+
+  function displayStart() {
+    startContainer.style.display = 'block';
+    quizContainer.style.display = 'none';
+    resultContainer.style.display = 'none';
+  }
+  
+  function startQuiz() {
+    startContainer.style.display = 'none';
+    quizContainer.style.display = 'block';
+    displayQuestion();
+    startTimer();
+  }
   
   // Display the current question and options
   function displayQuestion() {
@@ -101,8 +116,8 @@ const quizData = [
   }
   
   // Event listeners
+  startButton.addEventListener('click', startQuiz);
   submitButton.addEventListener('click', submitAnswer);
   
   // Start the quiz
-  displayQuestion();
-  startTimer();
+  displayStart();
