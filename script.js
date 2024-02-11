@@ -37,10 +37,11 @@ const quizData = [
   const submitButton = document.getElementById('submit-btn');
   const timerElement = document.getElementById('time');
   const timer = document.getElementById('timer');
+  const highScores = document.getElementById('scores-list')
   
   let currentQuestionIndex = 0;
   let score = 0;
-  let timeLeft = 90; // Change to set the time limit in seconds
+  let timeLeft = 30; // Change to set the time limit in seconds
 
   function displayStart() {
     startContainer.style.display = 'block';
@@ -48,6 +49,7 @@ const quizData = [
     resultContainer.style.display = 'none';
     timer.style.display = 'none';
     quiz.style.display = 'none';
+    highScores.style.display = 'none';
   }
   
   function startQuiz() {
@@ -55,6 +57,7 @@ const quizData = [
     quizContainer.style.display = 'block';
     timer.style.display = 'block';
     quiz.style.display = 'block';
+    highScores.style.display = 'none';
     displayQuestion();
     startTimer();
   }
@@ -93,7 +96,7 @@ const quizData = [
       score++;
     } else {
       // If the selected option is incorrect, subtract time
-      timeLeft -= 10; // Adjust the time penalty as needed
+      timeLeft -= 5; // Adjust the time penalty as needed
       if (timeLeft < 0) {
         timeLeft = 0; // Ensure timeLeft doesn't go negative
       }
@@ -108,11 +111,27 @@ const quizData = [
     }
   }
   
+  let quizEnded = false;
+
   // End the quiz and display the result
   function endQuiz() {
+    // Check if the quiz has already ended
+    if (quizEnded) {
+      return;
+    }
+    
+    quizEnded = true; // Set the flag to true to indicate that the quiz has ended
+    
     quizContainer.style.display = 'none';
     resultContainer.style.display = 'block';
+    timer.style.display = 'none';
     document.getElementById('result').textContent = `Your score: ${score}/${quizData.length}`;
+    // Delay prompting for initials to give time for the result to be seen
+    setTimeout(() => {
+      const name = prompt("Please enter your initials: ");
+      saveScore(name, score);
+      highScores.style.display = 'block';
+    }, 1000); // Adjust delay time as needed
   }
   
   // Start the timer
@@ -134,3 +153,38 @@ const quizData = [
   
   // Start the quiz
   displayStart();
+
+// Function to save score to localStorage
+function saveScore(name, score) {
+  // Retrieve previous scores from localStorage or initialize an empty array
+  const savedScores = JSON.parse(localStorage.getItem('quizScores')) || [];
+
+  // Add the current score to the saved scores array
+  savedScores.push({name: name, score: score});
+
+  // Store the updated scores back to localStorage
+  localStorage.setItem('quizScores', JSON.stringify(savedScores));
+}
+
+// Function to display saved scores
+function displayScores() {
+  // Retrieve saved scores from localStorage
+  const savedScores = JSON.parse(localStorage.getItem('quizScores'));
+
+  // Display saved scores in the UI
+  if (savedScores) {
+    const scoresList = document.getElementById('scores-list');
+    scoresList.innerHTML = ''; // Clear previous scores
+
+    savedScores.forEach((scoreObj, index) => {
+      const scoreItem = document.createElement('li');
+      scoreItem.textContent = `${scoreObj.name}: ${scoreObj.score}`;
+      scoresList.appendChild(scoreItem);
+    });
+  }
+}
+
+// Call displayScores() function to display saved scores
+document.addEventListener('DOMContentLoaded', function () {
+  displayScores(); // Call displayScores when the page finishes loading
+});
