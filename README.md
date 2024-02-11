@@ -44,3 +44,9 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 ## Acknowledgments
 
 * [Starter code obtained from ChatGPT](https://chat.openai.com/)
+
+## Webpage
+
+[Javascript Quiz](https://saralsparrow.github.io/Timed-Quiz/)
+![Image of webpage](./Screenshot%202024-02-10%20221715.png)
+
